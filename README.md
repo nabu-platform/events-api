@@ -38,7 +38,9 @@ public interface EventDispatcher {
 # How to use
 
 - SPI: be.nabu.libs.events.SPIEventDispatcher
-- OSGi: a stub implementation is provided which does nothing on fire() and fails on subscribe(). It has a service ranking of 0 so make sure custom implementations have a higher ranking.
+- OSGi: register the module. There is a basic implementation with a ranking of 0 in "events-impl".
+
+A stub implementation is provided in the API package which does nothing on fire() and fails on subscribe()
 
 The easiest way to get an event dispatcher is from the factory:
 
