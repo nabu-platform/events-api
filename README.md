@@ -14,14 +14,17 @@ This has two specific consequences:
 ## Synchronous feedback
 
 In a lot of cases you want the recipient to be able to influence the original sender.
+
 For example you could plug in a validation routine which wants to be able to stop the save() method if the content is invalid.
+
 Another example could be a pluggable proxy filter where you evaluate real-time which connections must be stopped.
 In this case an asynchronous fire does not work as you have no way to interact with the method invocation.
 
 # Design
 
 To solve both issues in the above, the API provides a fire() method where the sender can clarify a response handler. 
-Any response (if any) sent back by an event handler is sent to the response handler who can decide whether or not this is an appropriate response.
+
+Any response sent back by an event handler is sent to the response handler who can decide whether or not this is an appropriate response.
 
 ```java
 public interface EventDispatcher {
@@ -34,11 +37,10 @@ public interface EventDispatcher {
 
 # How to use
 
-SPI: be.nabu.libs.events.SPIEventDispatcher
-OSGi: a stub implementation is provided which does nothing on fire() and fails on subscribe()
-	It has a service ranking of 0 so make sure custom implementations have a higher ranking.
+- SPI: be.nabu.libs.events.SPIEventDispatcher
+- OSGi: a stub implementation is provided which does nothing on fire() and fails on subscribe(). It has a service ranking of 0 so make sure custom implementations have a higher ranking.
 
-The easiest way is to get an event dispatcher:
+The easiest way to get an event dispatcher is from the factory:
 
 ```java
 EventDispatcherFactory.getInstance().getEventDispatcher();
