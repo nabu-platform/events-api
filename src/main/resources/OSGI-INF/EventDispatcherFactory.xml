@@ -1,0 +1,12 @@
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="be.nabu.libs.events.EventDispatcherFactory">
+
+	<implementation class="be.nabu.libs.events.EventDispatcherFactory" />
+	
+	<reference name="EventDispatcherFactory"
+		interface="be.nabu.libs.events.api.EventDispatcher"
+		bind="setEventDispatcher"
+		unbind="unsetEventDispatcher"
+		cardinality="0..1"
+		policy="static"/>
+		
+</scr:component>
