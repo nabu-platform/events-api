@@ -4,8 +4,6 @@ import be.nabu.libs.events.api.ResponseHandler;
 
 /**
  * Returns the first response that is of a certain type
- * @param <E>
- * @param <R>
  */
 public class TypedResponseHandler<E, R> implements ResponseHandler<E, R> {
 

@@ -26,5 +26,10 @@ public class EventDispatcherStub implements EventDispatcher {
 	public <E> EventSubscription<E, Boolean> filter(Class<E> eventType, EventHandler<E, Boolean> filter, Object... sources) {
 		throw new UnsupportedOperationException();
 	}
+
+	@Override
+	public <E, R> R fire(E event, Object source, ResponseHandler<E, R> responseHandler, ResponseHandler<E, E> rewriteHandler) {
+		return null;
+	}
 	
 }

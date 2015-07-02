@@ -4,7 +4,7 @@
 	<groupId>be.nabu.libs.events</groupId>
 	<artifactId>events-api</artifactId>
 	<packaging>bundle</packaging>
-	<version>1.0</version>
+	<version>1.1-SNAPSHOT</version>
 	<name>events-api</name>
 	<url>http://nabu.be</url>
 	<description>API for an event-driven framework</description>

@@ -9,29 +9,24 @@ public interface EventDispatcher {
 	
 	/**
 	 * Fires an event (may be done asynchronously as no response is expected)
-	 * @param <E>
-	 * @param event
-	 * @param source
+	 * There is no overloaded version with a rewrite handler as this can be very hard to achieve in an asynchronous environment
 	 */
 	public <E> void fire(E event, Object source);
 	
 	/**
 	 * Fires an event synchronously and returns a response
-	 * @param <E>
-	 * @param <R>
-	 * @param event
-	 * @param source
-	 * @param responseHandler
-	 * @return
 	 */
 	public <E, R> R fire(E event, Object source, ResponseHandler<E, R> responseHandler);
 	
 	/**
+	 * Fires an event synchronously and returns a response, also allows for rewriting the original event
+	 * Note that any implementation should first check the response handler after the subscription returns something and only if it returns null, check if the rewrite handler can use it to rewrite the event
+	 */
+	public <E, R> R fire(E event, Object source, ResponseHandler<E, R> responseHandler, ResponseHandler<E, E> rewriteHandler);
+	
+	/**
 	 * Subscribe to a specific event type from zero or more specific source objects with the given event handler
 	 * If no specific objects are indicated, all events of the given type are subscribed to
-	 * @param eventType
-	 * @param eventHandler
-	 * @param sources
 	 */
 	public <E, R> EventSubscription<E, R> subscribe(Class<E> eventType, EventHandler<E, R> eventHandler, Object...sources);
 	
@@ -40,10 +35,6 @@ public interface EventDispatcher {
 	 * The filter must return a boolean which means:
 	 * - true & null: continue
 	 * - false: filter event
-	 * 
-	 * @param eventType
-	 * @param filter
-	 * @param sources
 	 */
 	public <E> EventSubscription<E, Boolean> filter(Class<E> eventType, EventHandler<E, Boolean> filter, Object...sources);
 	

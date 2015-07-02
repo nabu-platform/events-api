@@ -9,8 +9,6 @@ import be.nabu.libs.events.api.ResponseHandler;
 
 /**
  * Buffers all responses of a certain type and sends back a list of them when the event has been processed by the entire chain 
- * @param <E>
- * @param <R>
  */
 public class BufferedResponseHandler<E, R> implements ResponseHandler<E, List<R>> {
 

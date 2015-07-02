@@ -9,7 +9,6 @@ public interface ResponseHandler<E, R> {
 	 * @param event
 	 * @param response All responses (including "null") are sent to the handler
 	 * @param isLast Whether or not this is the last response for the given event
-	 * @return
 	 */
 	public R handle(E event, Object response, boolean isLast);
 }
