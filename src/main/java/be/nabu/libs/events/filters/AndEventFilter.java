@@ -16,12 +16,14 @@ public class AndEventFilter<E> implements EventHandler<E, Boolean> {
 	
 	@Override
 	public Boolean handle(E event) {
+		// all filters must allow the event for it to pass
 		for (EventHandler<E, Boolean> handler : handlers) {
 			Boolean response = handler.handle(event);
-			if (response != null && response == false)
-				return false;
+			if (response != null && response) {
+				return true;
+			}
 		}
-		return true;
+		return false;
 	}
 
 }
