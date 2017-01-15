@@ -1,8 +1,5 @@
 package be.nabu.libs.events.api;
 
-/**
- * TODO: a way to prioritize subscriptions (e.g. promote() & demote())
- */
 public interface EventSubscription<E, R> {
 	
 	/**
@@ -24,4 +21,12 @@ public interface EventSubscription<E, R> {
 	 * Removes this subscription from its event dispatcher
 	 */
 	public void unsubscribe();
+	/**
+	 * Allows you to promote a subscription to the head of the list
+	 */
+	public void promote();
+	/**
+	 * Allows you to demote a subscription to the end of the list
+	 */
+	public void demote();
 }
