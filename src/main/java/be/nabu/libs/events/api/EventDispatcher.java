@@ -5,14 +5,7 @@ package be.nabu.libs.events.api;
  * This will prevent memory leaks in case state is kept (e.g. BufferedResponseHandler)
  * For the same reason "null" values returned by event handlers should also be pushed to the response handler
  */
-public interface EventDispatcher {
-	
-	/**
-	 * Fires an event (may be done asynchronously as no response is expected)
-	 * There is no overloaded version with a rewrite handler as this can be very hard to achieve in an asynchronous environment
-	 */
-	public <E> void fire(E event, Object source);
-	
+public interface EventDispatcher extends EventTarget {
 	/**
 	 * Fires an event synchronously and returns a response
 	 */
